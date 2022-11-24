@@ -10,9 +10,19 @@
 </template>
 
 <script lang="ts">
+import {inject, Ref} from 'vue';
+
 export default {
-name:'Topnav'
-}
+  name: 'Topnav',
+  setup(){
+    const menuVisible = inject<Ref<boolean>>('menuVisible')
+    const toggleMenu = ()=>{
+      console.log(menuVisible);
+      menuVisible.value = !menuVisible.value
+    }
+    return {toggleMenu}
+  }
+};
 </script>
 
 <style lang="scss" scoped>
