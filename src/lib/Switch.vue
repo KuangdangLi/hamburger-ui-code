@@ -1,5 +1,5 @@
 <template>
-  <div>Switch组件</div>
+  <button><span></span></button>
 </template>
 
 <script lang="ts">
@@ -9,5 +9,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+button{
 
+}
 </style>
