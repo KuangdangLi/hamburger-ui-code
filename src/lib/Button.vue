@@ -1,5 +1,5 @@
 <template>
-  <button class="reed-button" :class="classes">
+  <button class="reed-button" :class="classes" :disabled="disabled">
     <slot></slot>
   </button>
 </template>
@@ -21,7 +21,11 @@ export default {
     level:{
       type:String,
       default:'normal'
-    }
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
 },
 setup(props){
   const {theme,size,level} = props
@@ -150,6 +154,21 @@ $grey: grey;
       &:focus {
         color: darken($red, 10%);
       }
+    }
+  }
+  &.reed-theme-button {
+    &[disabled] {
+      cursor: not-allowed;
+      color: $grey;
+      &:hover {
+        border-color: $grey;
+      }
+    }
+  }
+  &.reed-theme-link, &.reed-theme-text {
+    &[disabled] {
+      cursor: not-allowed;
+      color: $grey;
     }
   }
 }
