@@ -9,17 +9,22 @@ import {computed} from 'vue';
 
 export default {
   name:"Button",
-props:{
-  theme:{
-  type:String,
-  default:'button'
-  }
+  props:{
+    theme:{
+    type:String,
+    default:'button'
+    },
+    size:{
+    type:String,
+    default:'normal'
+    }
 },
 setup(props){
-  const {theme} = props
+  const {theme,size} = props
   const classes =computed(()=>{
     return {
       [`reed-theme-${theme}`]: theme,
+      [`reed-size-${size}`]: size,
     }
   })
   return {classes}
@@ -50,7 +55,6 @@ $grey: grey;
   border-radius: $radius;
   box-shadow: 0 1px 0 fade-out(black, 0.95);
   transition: background 250ms;
-
   & + & {
     margin-left: 8px;
   }
@@ -85,6 +89,16 @@ $grey: grey;
     &:focus {
       background: darken(white, 5%);
     }
+  }
+  &.reed-size-big {
+    font-size: 24px;
+    height: 48px;
+    padding: 0 16px;
+  }
+  &.reed-size-small {
+    font-size: 12px;
+    height: 20px;
+    padding: 0 4px;
   }
 }
 </style>

@@ -8,6 +8,23 @@
   <Button theme="text">ButtonText</Button>
   <Button theme="link">ButtonLink</Button>
   </div>
+  <hr />
+  <div>示例二</div>
+  <div>
+    <Button theme="button" size="small">Button</Button>
+    <Button theme="text" size="small">ButtonText</Button>
+    <Button theme="link" size="small">ButtonLink</Button>
+  </div>
+  <div>
+    <Button theme="button" size="normal">Button</Button>
+    <Button theme="text" size="normal">ButtonText</Button>
+    <Button theme="link" size="normal">ButtonLink</Button>
+  </div>
+  <div>
+    <Button theme="button" size="big">Button</Button>
+    <Button theme="text" size="big">ButtonText</Button>
+    <Button theme="link" size="big">ButtonLink</Button>
+  </div>
 </template>
 
 <script lang="ts">
