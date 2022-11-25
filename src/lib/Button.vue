@@ -1,12 +1,29 @@
 <template>
-  <button class="reed-button">
+  <button class="reed-button" :class="classes">
     <slot></slot>
   </button>
 </template>
 
 <script lang="ts">
+import {computed} from 'vue';
+
 export default {
-  name:"Button"
+  name:"Button",
+props:{
+  theme:{
+  type:String,
+  default:'button'
+  }
+},
+setup(props){
+  const {theme} = props
+  const classes =computed(()=>{
+    return {
+      [`reed-theme-${theme}`]: theme,
+    }
+  })
+  return {classes}
+}
 }
 </script>
 
@@ -50,6 +67,24 @@ $grey: grey;
 
   &::-moz-focus-inner {
     border: 0;
+  }
+  &.reed-theme-link {
+    border-color: transparent;
+    box-shadow: none;
+    color: $blue;
+    &:hover,
+    &:focus {
+      color: lighten($blue, 10%);
+    }
+  }
+  &.reed-theme-text {
+    border-color: transparent;
+    box-shadow: none;
+    color: inherit;
+    &:hover,
+    &:focus {
+      background: darken(white, 5%);
+    }
   }
 }
 </style>
