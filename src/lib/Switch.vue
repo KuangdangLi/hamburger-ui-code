@@ -24,8 +24,14 @@ button{
     left: 2px;
     height: $h2;
     width: $h2;
-    background:white;
+    background:red;
     border-radius: $h2/2;
+
+  }
+  &:hover{
+    >span{
+      left: calc(100% - #{$h2} - 2px);
+    }
   }
 }
 </style>
