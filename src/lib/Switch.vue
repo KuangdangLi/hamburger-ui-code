@@ -1,10 +1,19 @@
 <template>
-  <button><span></span></button>
+  <button @click="toggle" :class="{selected:x}"><span></span></button>
 </template>
 
 <script lang="ts">
+import {ref} from 'vue';
+
 export default {
- name:'Switch'
+ name:'Switch',
+  setup(){
+   const x = ref(false)
+   const toggle = ()=>{
+     x.value = !x.value
+   }
+    return {toggle,x}
+  }
 }
 </script>
 
@@ -28,7 +37,7 @@ button{
     border-radius: $h2/2;
 
   }
-  &:hover{
+  &.selected{
     >span{
       left: calc(100% - #{$h2} - 2px);
     }
