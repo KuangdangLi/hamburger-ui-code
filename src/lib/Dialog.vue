@@ -5,7 +5,7 @@
       <div class="reed-dialog">
         <header>
           <span>提示</span>
-          <span class="reed-dialog-close"></span>
+          <span class="reed-dialog-close" @click="close"></span>
         </header>
         <main>
           <div>一句话</div>
@@ -29,6 +29,12 @@ export default {
       type:Boolean,
       default:false
     },
+  },
+  setup(props,context){
+    const close = ()=>{
+      context.emit('update:visible', false)
+    }
+    return {close}
   },
   components: {Button},
 }

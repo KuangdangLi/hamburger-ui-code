@@ -1,7 +1,7 @@
 <template>
   <div>示例一</div>
   <Button @click="toggle">Dialog</Button>
-  <Dialog :visible="visible"></Dialog>
+  <Dialog :visible="visible" v-model:visible="visible"></Dialog>
 </template>
 
 <script lang="ts">
