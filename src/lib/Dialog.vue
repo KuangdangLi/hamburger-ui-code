@@ -4,11 +4,11 @@
     <div class="reed-dialog-wrapper">
       <div class="reed-dialog">
         <header>
-          <span>提示</span>
+          <slot name="title" />
           <span class="reed-dialog-close" @click="close"></span>
         </header>
         <main>
-          <div>一句话</div>
+          <slot name="content" />
         </main>
         <footer>
           <Button @click="ok">OK</Button>

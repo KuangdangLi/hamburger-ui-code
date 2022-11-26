@@ -3,7 +3,22 @@
   <Button @click="toggle">Dialog</Button>
   <Dialog :visible="visible" v-model:visible="visible" :close-on-click-over-clay="false"
   :ok="ok" :cancel="cancel"
-  ></Dialog>
+  >
+    <template v-slot:title>
+      <strong>标题</strong>
+    </template>
+    <template v-slot:content>
+      <div>
+        <strong>内容一</strong>
+      </div>
+      <div>
+        <strong>内容二</strong>
+      </div>
+      <div>
+        <strong>内容三</strong>
+      </div>
+    </template>
+  </Dialog>
 </template>
 
 <script lang="ts">
