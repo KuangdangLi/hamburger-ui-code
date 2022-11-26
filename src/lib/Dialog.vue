@@ -5,7 +5,7 @@
       <div class="reed-dialog">
         <header>
           <span>提示</span>
-          <span>关闭</span>
+          <span class="reed-dialog-close"></span>
         </header>
         <main>
           <div>一句话</div>
@@ -28,7 +28,7 @@ export default {
     visible:{
       type:Boolean,
       default:false
-    }
+    },
   },
   components: {Button},
 }
