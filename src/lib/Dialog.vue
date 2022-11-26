@@ -11,8 +11,8 @@
           <div>一句话</div>
         </main>
         <footer>
-          <Button>OK</Button>
-          <Button>Cancel</Button>
+          <Button @click="ok">OK</Button>
+          <Button @click="cancel">Cancel</Button>
         </footer>
       </div>
     </div>
@@ -32,6 +32,12 @@ export default {
     closeOnClickOverClay:{
       type:Boolean,
       default: true
+    },
+    ok:{
+      type:Function
+    },
+    cancel:{
+      type:Function
     }
   },
   setup(props,context){
@@ -43,7 +49,16 @@ export default {
         close()
       }
     }
-    return {close,onClickOverClay}
+    const ok = ()=>{
+      if(props.ok?.()!== false){
+        close()
+      }
+    }
+    const cancel = ()=>{
+      props.cancel?.()
+      close()
+    }
+    return {close,onClickOverClay,ok,cancel}
   },
   components: {Button},
 }

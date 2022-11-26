@@ -1,7 +1,9 @@
 <template>
   <div>示例一</div>
   <Button @click="toggle">Dialog</Button>
-  <Dialog :visible="visible" v-model:visible="visible" :close-on-click-over-clay="false"></Dialog>
+  <Dialog :visible="visible" v-model:visible="visible" :close-on-click-over-clay="false"
+  :ok="ok" :cancel="cancel"
+  ></Dialog>
 </template>
 
 <script lang="ts">
@@ -16,7 +18,13 @@ export default {
     const toggle = ()=>{
       visible.value = !visible.value
     }
-    return {visible,toggle}
+    const ok =()=>{
+      return false
+    }
+    const cancel=()=>{
+      console.log('cancel')
+    }
+    return {visible,toggle,ok,cancel}
   }
 }
 </script>
