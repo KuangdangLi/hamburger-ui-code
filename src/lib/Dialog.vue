@@ -1,6 +1,6 @@
 <template>
   <template v-if="visible">
-  <div class="reed-dialog-overlay">
+  <div class="reed-dialog-overlay" @click="onClickOverClay">
     <div class="reed-dialog-wrapper">
       <div class="reed-dialog">
         <header>
@@ -29,12 +29,21 @@ export default {
       type:Boolean,
       default:false
     },
+    closeOnClickOverClay:{
+      type:Boolean,
+      default: true
+    }
   },
   setup(props,context){
     const close = ()=>{
       context.emit('update:visible', false)
     }
-    return {close}
+    const onClickOverClay = ()=>{
+      if(props.closeOnClickOverClay){
+        close()
+      }
+    }
+    return {close,onClickOverClay}
   },
   components: {Button},
 }
