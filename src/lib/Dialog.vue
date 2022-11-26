@@ -1,4 +1,5 @@
 <template>
+  <template v-if="visible">
   <div class="reed-dialog-overlay">
     <div class="reed-dialog-wrapper">
       <div class="reed-dialog">
@@ -16,12 +17,19 @@
       </div>
     </div>
   </div>
+  </template>
 </template>
 
 <script lang="ts">
 import Button from './Button.vue';
 export default {
   name:'Dialog',
+  props:{
+    visible:{
+      type:Boolean,
+      default:false
+    }
+  },
   components: {Button},
 }
 </script>
