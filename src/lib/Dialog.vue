@@ -1,5 +1,6 @@
 <template>
   <template v-if="visible">
+    <Teleport to="body">
   <div class="reed-dialog-overlay" @click="onClickOverClay">
     <div class="reed-dialog-wrapper">
       <div class="reed-dialog">
@@ -17,6 +18,7 @@
       </div>
     </div>
   </div>
+    </Teleport>
   </template>
 </template>
 
