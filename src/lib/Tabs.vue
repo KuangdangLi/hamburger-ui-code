@@ -1,4 +1,6 @@
 <template>
+<!--    <component v-for="title in  titles" :is="title"></component>-->
+    <div v-for="(title,index) in  titles" :key="index">{{title}}</div>
   <div>
     <component v-for="item in  defaults" :is="item"></component>
   </div>
@@ -12,7 +14,9 @@ export default {
   setup(props,context){
     const defaults =  context.slots.default();
     defaults.forEach(item => {if(!(item.type === Tab)){throw new Error('Tabs只接受Tab')}} )
-    return {defaults}
+    const titles = defaults.map(item=>item.props.title)
+    console.log(titles);
+    return {defaults,titles}
   }
 }
 </script>
