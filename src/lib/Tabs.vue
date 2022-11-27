@@ -17,7 +17,7 @@
 
 <script lang="ts">
 import Tab from './Tab.vue';
-import {computed, onMounted, onUpdated, ref} from 'vue';
+import {computed, onMounted, ref, watchEffect} from 'vue';
 export default {
   name:'Tabs',
   components: {Tab},
@@ -38,20 +38,13 @@ export default {
     const select= (title)=>{
       context.emit('update:selected',title)
     }
-    onMounted(()=>{
+    onMounted(()=>watchEffect(()=>{
       const {width,left:left1} = selectedNavItem.value.getBoundingClientRect()
       const {left:left2} = container.value.getBoundingClientRect()
       const left = left1 - left2
       indicator.value.style.width = width + 'px'
       indicator.value.style.left = left + 'px'
-    })
-    onUpdated(()=>{
-      const {width,left:left1} = selectedNavItem.value.getBoundingClientRect()
-      const {left:left2} = container.value.getBoundingClientRect()
-      const left = left1 - left2
-      indicator.value.style.width = width + 'px'
-      indicator.value.style.left = left + 'px'
-    })
+    }))
     return {defaults,titles,select,current,indicator,container,selectedNavItem}
   }
 }
