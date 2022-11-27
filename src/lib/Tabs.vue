@@ -3,7 +3,7 @@
     <div class="reed-tabs-nav" ref="container">
       <div class="reed-tabs-nav-item" v-for="(title,index) in  titles" :key="index"
            :class="{selected: title === selected}"
-           :ref="el=>{if(el) navItems[index] =el}"
+           :ref="el=>{if(title === selected) selectedNavItem = el}"
            @click="()=>select(title)">
         {{title}}
       </div>
@@ -28,7 +28,7 @@ export default {
     }
   },
   setup(props,context){
-    const navItems = ref<HTMLDivElement[]>([])
+    const selectedNavItem = ref<HTMLDivElement>(null)
     const indicator = ref<HTMLDivElement>(null)
     const container = ref<HTMLDivElement>(null)
     const defaults =  context.slots.default();
@@ -39,24 +39,20 @@ export default {
       context.emit('update:selected',title)
     }
     onMounted(()=>{
-      const divs = navItems.value
-      const result = divs.filter(div=>div.classList.contains('selected'))[0]
-      const {width,left:left1} = result.getBoundingClientRect()
+      const {width,left:left1} = selectedNavItem.value.getBoundingClientRect()
       const {left:left2} = container.value.getBoundingClientRect()
       const left = left1 - left2
       indicator.value.style.width = width + 'px'
       indicator.value.style.left = left + 'px'
     })
     onUpdated(()=>{
-      const divs = navItems.value
-      const result = divs.filter(div=>div.classList.contains('selected'))[0]
-      const {width,left:left1} = result.getBoundingClientRect()
+      const {width,left:left1} = selectedNavItem.value.getBoundingClientRect()
       const {left:left2} = container.value.getBoundingClientRect()
       const left = left1 - left2
       indicator.value.style.width = width + 'px'
       indicator.value.style.left = left + 'px'
     })
-    return {defaults,titles,select,current,navItems,indicator,container}
+    return {defaults,titles,select,current,indicator,container,selectedNavItem}
   }
 }
 </script>
