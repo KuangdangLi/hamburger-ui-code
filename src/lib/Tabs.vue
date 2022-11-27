@@ -88,6 +88,7 @@ $border-color: #d9d9d9;
       width: 100%;
       background-color: $blue;
       bottom: 0;
+      transition: all 250ms;
     }
   }
   &-content {
