@@ -1,10 +1,12 @@
 <template>
-  <div>Tbas Demo</div>
+  <Tabs></Tabs>
 </template>
 
 <script lang="ts">
+import Tabs from '../lib/Tabs.vue';
 export default {
-  name:'Tbas Demo'
+  name:'Tbas Demo',
+  components: {Tabs},
 }
 </script>
 
