@@ -8,13 +8,14 @@
       </div>
     </div>
     <div class="reed-tabs-content">
-      <component v-for="item in  defaults" :is="item"></component>
+      <component :is="current" :key="current.props.title"></component>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import Tab from './Tab.vue';
+import {computed} from 'vue';
 export default {
   name:'Tabs',
   components: {Tab},
@@ -28,10 +29,11 @@ export default {
     const defaults =  context.slots.default();
     defaults.forEach(item => {if(!(item.type === Tab)){throw new Error('Tabs只接受Tab')}} )
     const titles = defaults.map(item=>item.props.title)
+    const current = computed(()=> defaults.filter(item=>item.props.title === props.selected)[0])
     const select= (title)=>{
       context.emit('update:selected',title)
     }
-    return {defaults,titles,select}
+    return {defaults,titles,select,current}
   }
 }
 </script>
