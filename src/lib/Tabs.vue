@@ -11,8 +11,7 @@ export default {
   components: {Tab},
   setup(props,context){
     const defaults =  context.slots.default();
-    console.log(...defaults);
-    console.log(defaults[0].type === Tab);
+    defaults.forEach(item => {if(!(item.type === Tab)){throw new Error('Tabs只接受Tab')}} )
     return {defaults}
   }
 }
