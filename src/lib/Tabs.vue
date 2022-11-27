@@ -1,11 +1,13 @@
 <template>
   <div class="reed-tabs">
-    <div class="reed-tabs-nav" >
+    <div class="reed-tabs-nav" ref="container">
       <div class="reed-tabs-nav-item" v-for="(title,index) in  titles" :key="index"
            :class="{selected: title === selected}"
+           :ref="el=>{if(el) navItems[index] =el}"
            @click="()=>select(title)">
         {{title}}
       </div>
+      <div class="reed-tabs-nav-indicator" ref="indicator"></div>
     </div>
     <div class="reed-tabs-content">
       <component :is="current" :key="current.props.title"></component>
@@ -15,7 +17,7 @@
 
 <script lang="ts">
 import Tab from './Tab.vue';
-import {computed} from 'vue';
+import {computed, onMounted, onUpdated, ref} from 'vue';
 export default {
   name:'Tabs',
   components: {Tab},
@@ -26,14 +28,35 @@ export default {
     }
   },
   setup(props,context){
+    const navItems = ref<HTMLDivElement[]>([])
+    const indicator = ref<HTMLDivElement>(null)
+    const container = ref<HTMLDivElement>(null)
     const defaults =  context.slots.default();
-    defaults.forEach(item => {if(!(item.type === Tab)){throw new Error('Tabs只接受Tab')}} )
+    defaults.forEach(item => {if(!(item.type.name === 'Tab')){throw new Error('Tabs只接受Tab')}} )
     const titles = defaults.map(item=>item.props.title)
     const current = computed(()=> defaults.filter(item=>item.props.title === props.selected)[0])
     const select= (title)=>{
       context.emit('update:selected',title)
     }
-    return {defaults,titles,select,current}
+    onMounted(()=>{
+      const divs = navItems.value
+      const result = divs.filter(div=>div.classList.contains('selected'))[0]
+      const {width,left:left1} = result.getBoundingClientRect()
+      const {left:left2} = container.value.getBoundingClientRect()
+      const left = left1 - left2
+      indicator.value.style.width = width + 'px'
+      indicator.value.style.left = left + 'px'
+    })
+    onUpdated(()=>{
+      const divs = navItems.value
+      const result = divs.filter(div=>div.classList.contains('selected'))[0]
+      const {width,left:left1} = result.getBoundingClientRect()
+      const {left:left2} = container.value.getBoundingClientRect()
+      const left = left1 - left2
+      indicator.value.style.width = width + 'px'
+      indicator.value.style.left = left + 'px'
+    })
+    return {defaults,titles,select,current,navItems,indicator,container}
   }
 }
 </script>
@@ -58,6 +81,13 @@ $border-color: #d9d9d9;
       &.selected{
         color: $blue;
       }
+    }
+    &-indicator{
+      position: absolute;
+      height: 3px;
+      width: 100%;
+      background-color: $blue;
+      bottom: 0;
     }
   }
   &-content {
