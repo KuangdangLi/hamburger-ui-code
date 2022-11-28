@@ -9,7 +9,11 @@
       <li>菜单1</li>
       <li>菜单2</li>
     </ul>
-    <span class="toggleAside" @click="toggleMenu"></span>
+    <span class="toggleAside" @click="toggleMenu">
+      <svg class="icon">
+        <use xlink:href="#icon-menu"></use>
+      </svg>
+    </span>
   </div>
 </template>
 
@@ -59,14 +63,17 @@ $color: #007974;
     }
   }
   > .toggleAside {
-    width: 24px;
-    height: 24px;
-    background: red;
+    width: 32px;
+    height: 32px;
     position: absolute;
     left: 16px;
     top: 50%;
     transform: translateY(-50%);
     display: none;
+    >svg{
+      width: 32px;
+      height: 32px;
+    }
   }
   @media (max-width: 500px) {
     > .menu {
