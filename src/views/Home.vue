@@ -1,4 +1,5 @@
 <template>
+  <div>
   <div class="topnavAndBanner">
     <Topnav />
     <div class="banner">
@@ -8,6 +9,18 @@
         <a href="https://github.com">GitHub</a>
         <router-link to="/doc">开始</router-link>
       </p>
+    </div>
+  </div>
+    <div class="features">
+      <svg class="icon">
+        <use xlink:href="#icon-Vue"></use>
+      </svg>
+      <svg class="icon">
+        <use xlink:href="#icon-typescript"></use>
+      </svg>
+      <svg class="icon">
+        <use xlink:href="#icon-light"></use>
+      </svg>
     </div>
   </div>
 </template>
@@ -49,6 +62,12 @@ $color: #007974;
         text-decoration: none;
       }
     }
+  }
+}
+.features{
+  >svg{
+    width: 64px;
+    height: 64px;
   }
 }
 </style>
