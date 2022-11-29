@@ -41,6 +41,7 @@ export default {
 
 <style lang="scss" scoped>
 $color: #007974;
+$yellow:#f9e490;
 .topnav {
   user-select: none;
   color: $color;
@@ -53,6 +54,8 @@ $color: #007974;
   z-index: 10;
   justify-content: center;
   align-items: center;
+  background-color: $yellow;
+;
   > .logo {
     max-width: 6em;
     margin-right: auto;

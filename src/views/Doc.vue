@@ -4,7 +4,7 @@
     <div  class="content">
       <aside v-if="menuVisible">
         <h2>组件列表</h2>
-        <ol>
+        <ol ref="list">
           <li>
             <router-link to="/doc/intro">介绍</router-link>
           </li>
@@ -27,6 +27,9 @@
             <router-link to="/doc/tabs">Tabs 组件</router-link>
           </li>
         </ol>
+          <svg class="icon" ref="icon">
+            <use xlink:href="#icon-coke"></use>
+          </svg>
       </aside>
       <main>
         <router-view />
@@ -37,20 +40,41 @@
 
 <script lang="ts">
 import Topnav from '../components/Topnav.vue'
-import {inject, Ref} from 'vue';
+import {inject, onMounted, onUpdated, ref, Ref} from 'vue';
+import {router} from '../router';
 
 export default {
   name:'Doc',
   components:{Topnav},
   setup(){
     const menuVisible = inject<Ref<boolean>>('menuVisible')
-    return {menuVisible}
+    const list = ref<HTMLOListElement>(null)
+    const icon = ref<SVGAElement>(null)
+    const count = ref(0)
+    router.afterEach(()=>{count.value+=1})
+    onMounted(()=>{
+      if(list.value){
+        let xxx = count.value
+        const {top,height} = [...list.value.childNodes].map(item => item.firstChild).filter(a => a.classList.contains('router-link-active'))[0].getBoundingClientRect()
+        icon.value.style.top = (top + height/2 - 8) + 'px'
+      }
+    })
+    onUpdated(()=>{
+      if(list.value){
+        let xxx = count.value
+        const {top,height} = [...list.value.childNodes].map(item => item.firstChild).filter(a => a.classList.contains('router-link-active'))[0].getBoundingClientRect()
+        icon.value.style.top = (top + height/2 - 8) + 'px'
+      }
+    })
+    return {menuVisible,list,icon}
   }
 }
 </script>
 
 <style lang="scss" scoped>
 $aside-index:1;
+$yellow:#f9e490;
+$white:#faf7ef;
 .layout {
   display: flex;
   flex-direction: column;
@@ -75,12 +99,12 @@ $aside-index:1;
   > main {
     flex-grow: 1;
     padding: 16px;
-    background: white;
+    background: $white;
   }
 }
 aside {
   z-index: $aside-index;
-  background: lightblue;
+  background: $yellow;
   width: 150px;
   position: fixed;
   top: 0;
@@ -95,13 +119,17 @@ aside {
     > li {
       >a{
         display: block;
-        padding: 4px 16px;
+        padding: 4px 20px;
         text-decoration: none;
         &.router-link-active {
           background-color: white;
         }
       }
     }
+  }
+  >svg{
+    position: absolute;
+    transition: all 250ms;
   }
 }
 main {

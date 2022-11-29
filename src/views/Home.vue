@@ -40,7 +40,6 @@
 
 <script lang="ts">
 import Topnav from '../components/Topnav.vue'
-
 export default {
   name:'Home',
   components:{Topnav}
@@ -51,8 +50,10 @@ export default {
 $green: #02bcb0;
 $border-radius: 4px;
 $color: #007974;
+$yellow:#f9e490;
 .topnavAndBanner {
-  background: linear-gradient(145deg, rgba(227, 255, 253, 1) 0%, rgba(183, 233, 230, 1) 100%);
+  //background: linear-gradient(145deg, rgba(227, 255, 253, 1) 0%, rgba(183, 233, 230, 1) 100%);
+  background: linear-gradient(145deg, $yellow,$yellow);
   clip-path: ellipse(80% 60% at 50% 40%);
 }
 .banner {
