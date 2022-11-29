@@ -1,5 +1,5 @@
 <template>
-  <button @click="toggle" class="reed-switch" :class="{'reed-checked' : value}">
+  <button @click="toggle" class="reed-switch" :class="{'reed-checked' : value}" :disabled="disabled">
     <span></span>
   </button>
 </template>
@@ -10,6 +10,10 @@ export default {
  name:'Switch',
   props:{
     value:Boolean,
+    disabled:{
+      type:Boolean,
+      default:false
+    }
   },
   setup(props,context){
    const toggle = ()=>{
