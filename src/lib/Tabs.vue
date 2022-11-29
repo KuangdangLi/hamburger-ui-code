@@ -74,7 +74,7 @@ $border-color: #d9d9d9;
     &-indicator{
       position: absolute;
       height: 3px;
-      width: 100%;
+      width: 0;
       background-color: $blue;
       bottom: 0;
       transition: all 250ms;
