@@ -55,6 +55,7 @@ $radius: 4px;
 $red: red;
 $grey: grey;
 .reed-button {
+  position: relative;
   box-sizing: border-box;
   height: $h;
   padding: 0 12px;
@@ -177,10 +178,11 @@ $grey: grey;
     }
   }
   >span.reed-loadingIndicator{
-    width: 14px;
-    height: 14px;
+    position: absolute;
+    left: 2px;
+    width: 8px;
+    height: 8px;
     display: inline-block;
-    margin-right: 4px;
     border-radius: 8px;
     border-color: $blue $blue $blue transparent;
     border-style: solid;
