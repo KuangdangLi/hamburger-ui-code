@@ -20,7 +20,6 @@ import "prismjs/themes/prism-okaidia.css"
 import {ref} from 'vue';
 
 const Prismjs = (window as any).Prism
-console.log(Prismjs);
 
 export default {
   name:'Demo',

@@ -11,11 +11,11 @@ export default {
   setup(){
     let screenWidth = ()=>document.documentElement.clientWidth
     window.onresize = ()=>{
-      menuVisible.value = screenWidth()< 500 ? false : true
+      menuVisible.value = screenWidth() > 500
     }
-    const menuVisible = ref(screenWidth() < 500 ? false : true)
+    const menuVisible = ref(screenWidth() > 500)
     router.afterEach(()=>{
-      if(screenWidth()<500){
+      if(screenWidth()<=500){
         menuVisible.value = false
       }
     })
