@@ -44,7 +44,7 @@ export default {
       const left = left1 - left2
       indicator.value.style.width = width + 'px'
       indicator.value.style.left = left + 'px'
-    }))
+    },{flush:'post'}))
     return {defaults,titles,select,current,indicator,container,selectedNavItem}
   }
 }
