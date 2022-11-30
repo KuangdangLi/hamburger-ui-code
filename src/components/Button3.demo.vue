@@ -7,7 +7,7 @@
     <Button>Button</Button>
     <Button level="danger">Button</Button>
   </div>
-  <div>
+  <div class="middle">
     <Button theme="link" level="main">Button</Button>
     <Button theme="link">Button</Button>
     <Button theme="link" level="danger">Button</Button>
@@ -26,3 +26,9 @@ export default {
   components: {Button}
 }
 </script>
+
+<style lang="scss" scoped>
+.middle{
+  margin: 10px 0;
+}
+</style>

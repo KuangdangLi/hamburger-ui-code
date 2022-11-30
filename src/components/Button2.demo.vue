@@ -7,7 +7,7 @@
     <Button theme="button" size="normal">Button</Button>
     <Button theme="button" size="small">Button</Button>
   </div>
-  <div>
+  <div class="middle">
     <Button theme="link" size="big">Button</Button>
     <Button theme="link" size="normal">Button</Button>
     <Button theme="link" size="small">Button</Button>
@@ -26,3 +26,9 @@ export default {
   components: {Button}
 }
 </script>
+
+<style lang="scss" scoped>
+  .middle{
+    margin: 10px 0;
+  }
+</style>
