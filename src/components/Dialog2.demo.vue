@@ -7,7 +7,7 @@
 
 <script lang="ts">
 import Button from "../lib/Button.vue"
-import {openDialog} from '../lib/onpnDialog';
+import {openDialog} from '../lib';
 import {h} from 'vue';
 export default {
   name:'Dialog2Demo',
