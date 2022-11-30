@@ -16,7 +16,7 @@
 <script lang="ts">
 import Button from "../lib/Button.vue"
 import "prismjs"
-import "prismjs/themes/prism-okaidia.css"
+import "prismjs/themes/prism-solarizedlight.css"
 import {ref} from 'vue';
 
 const Prismjs = (window as any).Prism
