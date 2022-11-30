@@ -1,15 +1,15 @@
 <template>
-  <div class="reed-tabs">
-    <div class="reed-tabs-nav" ref="container">
-      <div class="reed-tabs-nav-item" v-for="(title,index) in  titles" :key="index"
+  <div class="hamburger-tabs">
+    <div class="hamburger-tabs-nav" ref="container">
+      <div class="hamburger-tabs-nav-item" v-for="(title,index) in  titles" :key="index"
            :class="{selected: title === selected}"
            :ref="el=>{if(title === selected) selectedNavItem = el}"
            @click="()=>select(title)">
         {{title}}
       </div>
-      <div class="reed-tabs-nav-indicator" ref="indicator"></div>
+      <div class="hamburger-tabs-nav-indicator" ref="indicator"></div>
     </div>
-    <div class="reed-tabs-content">
+    <div class="hamburger-tabs-content">
       <component :is="current" :key="current.props.title"></component>
     </div>
   </div>
@@ -54,7 +54,7 @@ export default {
 $blue: #40a9ff;
 $color: #333;
 $border-color: #d9d9d9;
-.reed-tabs {
+.hamburger-tabs {
   &-nav {
     display: flex;
     color: $color;

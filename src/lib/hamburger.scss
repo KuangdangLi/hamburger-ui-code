@@ -1,5 +1,5 @@
-//匹配以"reed-"开头的、以及含有"reed-"的类名 class="reed-" class=“xxx reed-”
-[class^="reed-"],[class*=" reed-"]{
+//匹配以"hamburger-"开头的、以及含有"hamburger-"的类名 class="hamburger-" class=“xxx hamburger-”
+[class^="hamburger-"],[class*=" hamburger-"]{
   margin: 0;
   padding: 0;
   box-sizing: border-box;

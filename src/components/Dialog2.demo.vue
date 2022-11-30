@@ -17,7 +17,7 @@ export default {
       openDialog({visible:true,closeOnClickOverClay:false,
         cancel:()=>{console.log('取消了');},ok:()=>{console.log('成功了');return true},
         title: ()=>h('strong',{},'标题'),
-        content: ()=>h('div',{},'一句话')
+        content: ()=>h('div',{},'汉堡薯条可乐')
       })
     }
     return {showDialog}

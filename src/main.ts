@@ -1,4 +1,4 @@
-import "./lib/reed.scss"
+import "./lib/hamburger.scss"
 import './index.scss'
 import { createApp } from 'vue'
 import App from './App.vue'

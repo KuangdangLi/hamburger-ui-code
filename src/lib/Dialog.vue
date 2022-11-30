@@ -1,12 +1,12 @@
 <template>
   <template v-if="visible">
     <Teleport to="body">
-  <div class="reed-dialog-overlay" @click="onClickOverClay">
-    <div class="reed-dialog-wrapper">
-      <div class="reed-dialog">
+  <div class="hamburger-dialog-overlay" @click="onClickOverClay">
+    <div class="hamburger-dialog-wrapper">
+      <div class="hamburger-dialog">
         <header>
           <slot name="title" />
-          <span class="reed-dialog-close" @click="close"></span>
+          <span class="hamburger-dialog-close" @click="close"></span>
         </header>
         <main>
           <slot name="content" />
@@ -69,7 +69,7 @@ export default {
 <style lang="scss">
 $radius: 4px;
 $border-color: #d9d9d9;
-.reed-dialog {
+.hamburger-dialog {
   background: white;
   border-radius: $radius;
   box-shadow: 0 0 3px fade_out(black, 0.5);

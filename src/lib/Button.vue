@@ -1,6 +1,6 @@
 <template>
-  <button class="reed-button" :class="classes" :disabled="disabled">
-    <span v-if="loading" class="reed-loadingIndicator"></span>
+  <button class="hamburger-button" :class="classes" :disabled="disabled">
+    <span v-if="loading" class="hamburger-loadingIndicator"></span>
     <slot></slot>
   </button>
 </template>
@@ -36,9 +36,9 @@ setup(props){
   const {theme,size,level} = props
   const classes =computed(()=>{
     return {
-      [`reed-theme-${theme}`]: theme,
-      [`reed-size-${size}`]: size,
-      [`reed-level-${level}`]: level,
+      [`hamburger-theme-${theme}`]: theme,
+      [`hamburger-size-${size}`]: size,
+      [`hamburger-level-${level}`]: level,
     }
   })
   return {classes}
@@ -54,7 +54,7 @@ $blue: #40a9ff;
 $radius: 4px;
 $red: red;
 $grey: grey;
-.reed-button {
+.hamburger-button {
   position: relative;
   box-sizing: border-box;
   height: $h;
@@ -87,7 +87,7 @@ $grey: grey;
   &::-moz-focus-inner {
     border: 0;
   }
-  &.reed-theme-link {
+  &.hamburger-theme-link {
     border-color: transparent;
     box-shadow: none;
     color: $blue;
@@ -96,7 +96,7 @@ $grey: grey;
       color: lighten($blue, 10%);
     }
   }
-  &.reed-theme-text {
+  &.hamburger-theme-text {
     border-color: transparent;
     box-shadow: none;
     color: inherit;
@@ -105,18 +105,18 @@ $grey: grey;
       background: darken(white, 5%);
     }
   }
-  &.reed-size-big {
+  &.hamburger-size-big {
     font-size: 24px;
     height: 48px;
     padding: 0 16px;
   }
-  &.reed-size-small {
+  &.hamburger-size-small {
     font-size: 12px;
     height: 20px;
     padding: 0 4px;
   }
-  &.reed-theme-button {
-    &.reed-level-main {
+  &.hamburger-theme-button {
+    &.hamburger-level-main {
       background: $blue;
       color: white;
       border-color: $blue;
@@ -126,7 +126,7 @@ $grey: grey;
         border-color: darken($blue, 10%);
       }
     }
-    &.reed-level-danger {
+    &.hamburger-level-danger {
       background: $red;
       border-color: $red;
       color: white;
@@ -137,8 +137,8 @@ $grey: grey;
       }
     }
   }
-  &.reed-theme-link {
-    &.reed-level-danger {
+  &.hamburger-theme-link {
+    &.hamburger-level-danger {
       color: $red;
       &:hover,
       &:focus {
@@ -146,15 +146,15 @@ $grey: grey;
       }
     }
   }
-  &.reed-theme-text {
-    &.reed-level-main {
+  &.hamburger-theme-text {
+    &.hamburger-level-main {
       color: $blue;
       &:hover,
       &:focus {
         color: darken($blue, 10%);
       }
     }
-    &.reed-level-danger {
+    &.hamburger-level-danger {
       color: $red;
       &:hover,
       &:focus {
@@ -162,7 +162,7 @@ $grey: grey;
       }
     }
   }
-  &.reed-theme-button {
+  &.hamburger-theme-button {
     &[disabled] {
       cursor: not-allowed;
       color: $grey;
@@ -171,13 +171,13 @@ $grey: grey;
       }
     }
   }
-  &.reed-theme-link, &.reed-theme-text {
+  &.hamburger-theme-link, &.hamburger-theme-text {
     &[disabled] {
       cursor: not-allowed;
       color: $grey;
     }
   }
-  >span.reed-loadingIndicator{
+  >span.hamburger-loadingIndicator{
     position: absolute;
     left: 2px;
     width: 8px;
@@ -187,9 +187,9 @@ $grey: grey;
     border-color: $blue $blue $blue transparent;
     border-style: solid;
     border-width: 2px;
-    animation: reed-spin 750ms infinite linear;
+    animation: hamburger-spin 750ms infinite linear;
   }
-  @keyframes reed-spin {
+  @keyframes hamburger-spin {
     0%{transform: rotate(0deg)}
     100%{transform: rotate(360deg)}
   }

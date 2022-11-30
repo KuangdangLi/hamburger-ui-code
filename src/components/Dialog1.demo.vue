@@ -9,13 +9,13 @@
     </template>
     <template v-slot:content>
       <div>
-        <strong>内容一</strong>
+        <strong>汉堡</strong>
       </div>
       <div>
-        <strong>内容二</strong>
+        <strong>薯条</strong>
       </div>
       <div>
-        <strong>内容三</strong>
+        <strong>可乐</strong>
       </div>
     </template>
   </Dialog>
