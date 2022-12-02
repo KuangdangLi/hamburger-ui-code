@@ -3,7 +3,7 @@
 </demo>
 <template>
   <Button @click="toggle">Dialog</Button>
-  <Dialog :visible="visible" v-model:visible="visible" :close-on-click-over-clay="false" :ok="ok" :cancel="cancel">
+  <Dialog v-model:visible="visible" :close-on-click-over-clay="false" :ok="ok" :cancel="cancel">
     <template v-slot:title>
       <strong>标题</strong>
     </template>
